@@ -1,0 +1,36 @@
+﻿@model AuthorVM
+@{
+    ViewBag.Title = "AuthorList";
+}
+
+<div class="jumbotron">
+    Yeni bir yazar eklemek icin  @Html.ActionLink("tıklayınız","AddAuthor")
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel panel-body">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Isim</th>
+                    <th>SoyIsim</th>
+                    <th colspan="2" style="padding-left:100px">Islemler</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (Author item in Model.Authors)
+                {
+                    <tr>
+                        <td>@item.FirstName</td>
+                        <td>@item.LastName</td>
+                        <td>@Html.ActionLink("Güncelle","UpdateAuthor",new { id=item.ID},new { @class="btn btn-warning"})</td>
+
+                        <td>@Html.ActionLink("Sil","DeleteAuthor",new { id=item.ID},new { @class="btn btn-danger"})</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
